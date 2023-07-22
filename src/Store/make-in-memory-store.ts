@@ -1,22 +1,29 @@
 import type KeyedDB from '@adiwajshing/keyed-db'
-import type { Comparable } from '@adiwajshing/keyed-db/lib/Types'
+import type { Comparable } from '@adiwajshing/keyed-db/lib/Types.js'
 import type { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { DEFAULT_CONNECTION_CONFIG } from '../Defaults'
-import type makeMDSocket from '../Socket'
-import type { BaileysEventEmitter, Chat, ConnectionState, Contact, GroupMetadata, PresenceData, WAMessage, WAMessageCursor, WAMessageKey } from '../Types'
-import { Label } from '../Types/Label'
-import { LabelAssociation, LabelAssociationType, MessageLabelAssociation } from '../Types/LabelAssociation'
-import { toNumber, updateMessageWithReaction, updateMessageWithReceipt } from '../Utils'
-import { jidNormalizedUser } from '../WABinary'
-import makeOrderedDictionary from './make-ordered-dictionary'
-import { ObjectRepository } from './object-repository'
+import { proto } from '../../WAProto/index.js'
+import { DEFAULT_CONNECTION_CONFIG } from '../Defaults/index.js'
+import type makeMDSocket from '../Socket/index.js'
+import type {
+	BaileysEventEmitter, Chat, ConnectionState, Contact, GroupMetadata, PresenceData, WAMessage,
+	WAMessageCursor, WAMessageKey
+} from '../Types/index.js'
+import { Label } from '../Types/Label.js'
+import { LabelAssociation, LabelAssociationType, MessageLabelAssociation } from '../Types/LabelAssociation.js'
+import { toNumber, updateMessageWithReaction, updateMessageWithReceipt } from '../Utils/index.js'
+import { jidNormalizedUser } from '../WABinary/index.js'
+import makeOrderedDictionary from './make-ordered-dictionary.js'
+import { ObjectRepository } from './object-repository.js'
 
 type WASocket = ReturnType<typeof makeMDSocket>
 
 export const waChatKey = (pin: boolean) => ({
-	key: (c: Chat) => (pin ? (c.pinned ? '1' : '0') : '') + (c.archived ? '0' : '1') + (c.conversationTimestamp ? c.conversationTimestamp.toString(16).padStart(8, '0') : '') + c.id,
-	compare: (k1: string, k2: string) => k2.localeCompare(k1)
+	key(c: Chat) {
+		return (pin ? (c.pinned ? '1' : '0') : '') + (c.archived ? '0' : '1') + (c.conversationTimestamp ? c.conversationTimestamp.toString(16).padStart(8, '0') : '') + c.id
+	},
+	compare(k1: string, k2: string) {
+		return k2.localeCompare(k1)
+	}
 })
 
 export const waMessageID = (m: WAMessage) => m.key.id || ''

@@ -1,10 +1,10 @@
 import { Boom } from '@hapi/boom'
 import { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { NOISE_MODE, WA_CERT_DETAILS } from '../Defaults'
-import { KeyPair } from '../Types'
-import { BinaryNode, decodeBinaryNode } from '../WABinary'
-import { aesDecryptGCM, aesEncryptGCM, Curve, hkdf, sha256 } from './crypto'
+import { proto } from '../../WAProto/index.js'
+import { NOISE_MODE, WA_CERT_DETAILS } from '../Defaults/index.js'
+import { KeyPair } from '../Types/index.js'
+import { BinaryNode, decodeBinaryNode } from '../WABinary/index.js'
+import { aesDecryptGCM, aesEncryptGCM, Curve, hkdf, sha256 } from './crypto.js'
 
 const generateIV = (counter: number) => {
 	const iv = new ArrayBuffer(12)

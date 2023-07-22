@@ -1,10 +1,10 @@
 import { Boom } from '@hapi/boom'
 import axios from 'axios'
-import { randomBytes } from 'crypto'
-import { promises as fs } from 'fs'
+import { randomBytes } from 'node:crypto'
+import { promises as fs } from 'node:fs'
 import { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { MEDIA_KEYS, URL_EXCLUDE_REGEX, URL_REGEX, WA_DEFAULT_EPHEMERAL } from '../Defaults'
+import { proto } from '../../WAProto/index.js'
+import { MEDIA_KEYS, URL_EXCLUDE_REGEX, URL_REGEX, WA_DEFAULT_EPHEMERAL } from '../Defaults/index.js'
 import {
 	AnyMediaMessageContent,
 	AnyMessageContent,
@@ -22,11 +22,11 @@ import {
 	WAMessageStatus,
 	WAProto,
 	WATextMessage,
-} from '../Types'
-import { isJidGroup, isJidStatusBroadcast, jidNormalizedUser } from '../WABinary'
-import { sha256 } from './crypto'
-import { generateMessageID, getKeyAuthor, unixTimestampSeconds } from './generics'
-import { downloadContentFromMessage, encryptedStream, generateThumbnail, getAudioDuration, getAudioWaveform, MediaDownloadOptions } from './messages-media'
+} from '../Types/index.js'
+import { isJidGroup, isJidStatusBroadcast, jidNormalizedUser } from '../WABinary/index.js'
+import { sha256 } from './crypto.js'
+import { generateMessageID, getKeyAuthor, unixTimestampSeconds } from './generics.js'
+import { downloadContentFromMessage, encryptedStream, generateThumbnail, getAudioDuration, getAudioWaveform, MediaDownloadOptions } from './messages-media.js'
 
 type MediaUploadData = {
 	media: WAMediaUpload
@@ -891,12 +891,12 @@ export const downloadMediaMessage = async(
 			throw new Boom('No message present', { statusCode: 400, data: message })
 		}
 
-		const contentType = getContentType(mContent)
+		const contentType = String(getContentType(mContent))
 		let mediaType = contentType?.replace('Message', '') as MediaType
 		const media = mContent[contentType!]
 
 		if(!media || typeof media !== 'object' || (!('url' in media) && !('thumbnailDirectPath' in media))) {
-			throw new Boom(`"${contentType}" message is not a media message`)
+			throw new Boom(`"${ contentType }" message is not a media message`)
 		}
 
 		let download: DownloadableMessage

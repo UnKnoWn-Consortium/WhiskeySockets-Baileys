@@ -1,10 +1,10 @@
 
 import { Boom } from '@hapi/boom'
-import { randomBytes } from 'crypto'
+import { randomBytes } from 'node:crypto'
 import NodeCache from 'node-cache'
-import { proto } from '../../WAProto'
-import { DEFAULT_CACHE_TTLS, KEY_BUNDLE_TYPE, MIN_PREKEY_COUNT } from '../Defaults'
-import { MessageReceiptType, MessageRelayOptions, MessageUserReceipt, SocketConfig, WACallEvent, WAMessageKey, WAMessageStatus, WAMessageStubType, WAPatchName } from '../Types'
+import { proto } from '../../WAProto/index.js'
+import { DEFAULT_CACHE_TTLS, KEY_BUNDLE_TYPE, MIN_PREKEY_COUNT } from '../Defaults/index.js'
+import { MessageReceiptType, MessageRelayOptions, MessageUserReceipt, SocketConfig, WACallEvent, WAMessageKey, WAMessageStatus, WAMessageStubType, WAPatchName } from '../Types/index.js'
 import {
 	aesDecryptCTR,
 	aesEncryptGCM,
@@ -22,9 +22,9 @@ import {
 	unixTimestampSeconds,
 	xmppPreKey,
 	xmppSignedPreKey
-} from '../Utils'
-import { cleanMessage } from '../Utils'
-import { makeMutex } from '../Utils/make-mutex'
+} from '../Utils/index.js'
+import { cleanMessage } from '../Utils/index.js'
+import { makeMutex } from '../Utils/make-mutex.js'
 import {
 	areJidsSameUser,
 	BinaryNode,
@@ -37,9 +37,9 @@ import {
 	jidDecode,
 	jidNormalizedUser,
 	S_WHATSAPP_NET
-} from '../WABinary'
-import { extractGroupMetadata } from './groups'
-import { makeMessagesSocket } from './messages-send'
+} from '../WABinary/index.js'
+import { extractGroupMetadata } from './groups.js'
+import { makeMessagesSocket } from './messages-send.js'
 
 export const makeMessagesRecvSocket = (config: SocketConfig) => {
 	const {

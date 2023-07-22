@@ -1,9 +1,9 @@
-import { mkdir, readFile, stat, unlink, writeFile } from 'fs/promises'
-import { join } from 'path'
-import { proto } from '../../WAProto'
-import { AuthenticationCreds, AuthenticationState, SignalDataTypeMap } from '../Types'
-import { initAuthCreds } from './auth-utils'
-import { BufferJSON } from './generics'
+import { mkdir, readFile, stat, unlink, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { proto } from '../../WAProto/index.js';
+import { AuthenticationCreds, AuthenticationState, SignalDataTypeMap } from '../Types/index.js';
+import { initAuthCreds } from './auth-utils.js';
+import { BufferJSON } from './generics.js';
 
 /**
  * stores the full authentication state in a single folder.

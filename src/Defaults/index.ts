@@ -1,12 +1,12 @@
-import { proto } from '../../WAProto'
-import { makeLibSignalRepository } from '../Signal/libsignal'
-import type { AuthenticationState, MediaType, SocketConfig, WAVersion } from '../Types'
-import { Browsers } from '../Utils'
-import logger from '../Utils/logger'
-import { version } from './baileys-version.json'
+import { proto } from '../../WAProto/index.js';
+import { makeLibSignalRepository } from '../Signal/libsignal.js';
+import { AuthenticationState, MediaType, SocketConfig, WAVersion } from '../Types/index.js';
+import { Browsers } from '../Utils/index.js';
+import logger from '../Utils/logger.js';
+import { version } from './baileys-version.json';
 import phoneNumberMCC from './phonenumber-mcc.json'
 
-export const UNAUTHORIZED_CODES = [401, 403, 419]
+export const UNAUTHORIZED_CODES = [401, 403, 419];
 
 export const PHONENUMBER_MCC = phoneNumberMCC
 

@@ -1,9 +1,9 @@
 import { Boom } from '@hapi/boom'
 import { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { SignalRepository, WAMessageKey } from '../Types'
-import { areJidsSameUser, BinaryNode, isJidBroadcast, isJidGroup, isJidStatusBroadcast, isJidUser } from '../WABinary'
-import { unpadRandomMax16 } from './generics'
+import { proto } from '../../WAProto/index.js'
+import { SignalRepository, WAMessageKey } from '../Types/index.js'
+import { areJidsSameUser, BinaryNode, isJidBroadcast, isJidGroup, isJidStatusBroadcast, isJidUser } from '../WABinary/index.js'
+import { unpadRandomMax16 } from './generics.js'
 
 const NO_MESSAGE_FOUND_ERROR_TEXT = 'Message absent from node'
 

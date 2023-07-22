@@ -1,8 +1,10 @@
+import { randomBytes } from 'node:crypto'
+import { URL } from 'node:url'
+import { promisify } from 'node:util'
+
 import { Boom } from '@hapi/boom'
-import { randomBytes } from 'crypto'
-import { URL } from 'url'
-import { promisify } from 'util'
-import { proto } from '../../WAProto'
+
+import { proto } from '../../WAProto/index.js'
 import {
 	DEF_CALLBACK_PREFIX,
 	DEF_TAG_PREFIX,
@@ -12,8 +14,8 @@ import {
 	MOBILE_NOISE_HEADER,
 	MOBILE_PORT,
 	NOISE_WA_HEADER
-} from '../Defaults'
-import { DisconnectReason, SocketConfig } from '../Types'
+} from '../Defaults/index.js'
+import { DisconnectReason, SocketConfig } from '../Types/index.js'
 import {
 	addTransactionCapability,
 	aesEncryptCTR,
@@ -33,7 +35,7 @@ import {
 	makeNoiseHandler,
 	printQRIfNecessaryListener,
 	promiseTimeout
-} from '../Utils'
+} from '../Utils/index.js'
 import {
 	assertNodeErrorFree,
 	BinaryNode,
@@ -43,8 +45,8 @@ import {
 	getBinaryNodeChildren,
 	jidEncode,
 	S_WHATSAPP_NET
-} from '../WABinary'
-import { MobileSocketClient, WebSocketClient } from './Client'
+} from '../WABinary/index.js'
+import { MobileSocketClient, WebSocketClient } from './Client/index.js'
 
 /**
  * Connects to WA servers and performs:
@@ -279,8 +281,8 @@ export const makeSocket = (config: SocketConfig) => {
 				{ tag: 'count', attrs: {} }
 			]
 		})
-		const countChild = getBinaryNodeChild(result, 'count')
-		return +countChild!.attrs.value
+		const countChild = <BinaryNode>getBinaryNodeChild(result, 'count')
+		return +countChild.attrs.value
 	}
 
 	/** generates and uploads a set of pre-keys to the server */

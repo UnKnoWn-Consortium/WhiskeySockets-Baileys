@@ -1,11 +1,13 @@
+import type { Readable } from 'node:stream'
+import type { URL } from 'node:url'
+
 import { AxiosRequestConfig } from 'axios'
 import type { Logger } from 'pino'
-import type { Readable } from 'stream'
-import type { URL } from 'url'
-import { proto } from '../../WAProto'
-import { MEDIA_HKDF_KEY_MAPPING } from '../Defaults'
-import type { GroupMetadata } from './GroupMetadata'
-import { CacheStore } from './Socket'
+
+import { proto } from '../../WAProto/index.js'
+import { MEDIA_HKDF_KEY_MAPPING } from '../Defaults/index.js'
+import type { GroupMetadata } from './GroupMetadata.js'
+import { CacheStore } from './Socket.js'
 
 // export the WAMessage Prototypes
 export { proto as WAProto }

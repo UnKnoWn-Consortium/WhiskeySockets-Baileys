@@ -1,12 +1,12 @@
 import { Boom } from '@hapi/boom'
-import { proto } from '../../WAProto'
-import { PROCESSABLE_HISTORY_TYPES } from '../Defaults'
-import { ALL_WA_PATCH_NAMES, ChatModification, ChatMutation, LTHashState, MessageUpsertType, PresenceData, SocketConfig, WABusinessHoursConfig, WABusinessProfile, WAMediaUpload, WAMessage, WAPatchCreate, WAPatchName, WAPresence, WAPrivacyOnlineValue, WAPrivacyValue, WAReadReceiptsValue } from '../Types'
-import { chatModificationToAppPatch, ChatMutationMap, decodePatches, decodeSyncdSnapshot, encodeSyncdPatch, extractSyncdPatches, generateProfilePicture, getHistoryMsg, newLTHashState, processSyncAction } from '../Utils'
-import { makeMutex } from '../Utils/make-mutex'
-import processMessage from '../Utils/process-message'
-import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, jidNormalizedUser, reduceBinaryNodeToDictionary, S_WHATSAPP_NET } from '../WABinary'
-import { makeSocket } from './socket'
+import { proto } from '../../WAProto/index.js'
+import { PROCESSABLE_HISTORY_TYPES } from '../Defaults/index.js'
+import { ALL_WA_PATCH_NAMES, ChatModification, ChatMutation, LTHashState, MessageUpsertType, PresenceData, SocketConfig, WABusinessHoursConfig, WABusinessProfile, WAMediaUpload, WAMessage, WAPatchCreate, WAPatchName, WAPresence, WAPrivacyOnlineValue, WAPrivacyValue, WAReadReceiptsValue } from '../Types/index.js'
+import { chatModificationToAppPatch, ChatMutationMap, decodePatches, decodeSyncdSnapshot, encodeSyncdPatch, extractSyncdPatches, generateProfilePicture, getHistoryMsg, newLTHashState, processSyncAction } from '../Utils/index.js'
+import { makeMutex } from '../Utils/make-mutex.js'
+import processMessage from '../Utils/process-message.js'
+import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, jidNormalizedUser, reduceBinaryNodeToDictionary, S_WHATSAPP_NET } from '../WABinary/index.js'
+import { makeSocket } from './socket.js'
 
 const MAX_SYNC_ATTEMPTS = 2
 

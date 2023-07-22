@@ -1,6 +1,6 @@
-import { EventEmitter } from 'events'
-import { URL } from 'url'
-import { SocketConfig } from '../../Types'
+import { EventEmitter } from 'node:events'
+import { URL } from 'node:url'
+import { SocketConfig } from '../../Types/index.js'
 
 export abstract class AbstractSocketClient extends EventEmitter {
 	abstract get isOpen(): boolean

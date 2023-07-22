@@ -1,6 +1,6 @@
-import { DEFAULT_CONNECTION_CONFIG } from '../Defaults'
-import { UserFacingSocketConfig } from '../Types'
-import { makeRegistrationSocket as _makeSocket } from './registration'
+import { DEFAULT_CONNECTION_CONFIG } from '../Defaults/index.js'
+import { UserFacingSocketConfig } from '../Types/index.js'
+import { makeRegistrationSocket as _makeSocket } from './registration.js'
 
 // export the last socket layer
 const makeWASocket = (config: UserFacingSocketConfig) => (

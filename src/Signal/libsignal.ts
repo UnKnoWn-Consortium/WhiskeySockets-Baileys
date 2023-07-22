@@ -1,8 +1,8 @@
 import * as libsignal from 'libsignal'
-import { GroupCipher, GroupSessionBuilder, SenderKeyDistributionMessage, SenderKeyName, SenderKeyRecord } from '../../WASignalGroup'
-import { SignalAuthState } from '../Types'
-import { SignalRepository } from '../Types/Signal'
-import { generateSignalPubKey } from '../Utils'
+import { GroupCipher, GroupSessionBuilder, SenderKeyDistributionMessage, SenderKeyName, SenderKeyRecord } from '../../WASignalGroup/index.js'
+import { SignalAuthState } from '../Types/index.js'
+import { SignalRepository } from '../Types/Signal.js'
+import { generateSignalPubKey } from '../Utils/index.js'
 
 export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository {
 	const storage = signalStorage(auth)

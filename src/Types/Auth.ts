@@ -1,7 +1,7 @@
-import type { proto } from '../../WAProto'
-import { RegistrationOptions } from '../Socket/registration'
-import type { Contact } from './Contact'
-import type { MinimalMessage } from './Message'
+import type { proto } from '../../WAProto/index.js'
+import { RegistrationOptions } from '../Socket/registration.js'
+import type { Contact } from './Contact.js'
+import type { MinimalMessage } from './Message.js'
 
 export type KeyPair = { public: Uint8Array, private: Uint8Array }
 export type SignedKeyPair = {

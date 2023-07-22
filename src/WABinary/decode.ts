@@ -1,7 +1,7 @@
 import { inflateSync } from 'zlib'
-import * as constants from './constants'
-import { jidEncode } from './jid-utils'
-import type { BinaryNode, BinaryNodeCodingOptions } from './types'
+import * as constants from './constants.js'
+import { jidEncode } from './jid-utils.js'
+import type { BinaryNode, BinaryNodeCodingOptions } from './types.js'
 
 export const decompressingIfRequired = (buffer: Buffer) => {
 	if(2 & buffer.readUInt8()) {

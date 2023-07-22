@@ -1,21 +1,26 @@
+import { exec } from 'node:child_process'
+import * as Crypto from 'node:crypto'
+import { once } from 'node:events'
+import { createReadStream, createWriteStream, promises as fs, WriteStream } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { Readable, Transform } from 'node:stream'
+import { URL } from 'node:url'
+
 import { Boom } from '@hapi/boom'
 import { AxiosRequestConfig } from 'axios'
-import { exec } from 'child_process'
-import * as Crypto from 'crypto'
-import { once } from 'events'
-import { createReadStream, createWriteStream, promises as fs, WriteStream } from 'fs'
 import type { IAudioMetadata } from 'music-metadata'
-import { tmpdir } from 'os'
-import { join } from 'path'
 import type { Logger } from 'pino'
-import { Readable, Transform } from 'stream'
-import { URL } from 'url'
-import { proto } from '../../WAProto'
-import { DEFAULT_ORIGIN, MEDIA_HKDF_KEY_MAPPING, MEDIA_PATH_MAP } from '../Defaults'
-import { BaileysEventMap, DownloadableMessage, MediaConnInfo, MediaDecryptionKeyInfo, MediaType, MessageType, SocketConfig, WAGenericMediaMessage, WAMediaUpload, WAMediaUploadFunction, WAMessageContent } from '../Types'
-import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildBuffer, jidNormalizedUser } from '../WABinary'
-import { aesDecryptGCM, aesEncryptGCM, hkdf } from './crypto'
-import { generateMessageID } from './generics'
+
+import { proto } from '../../WAProto/index.js'
+import { DEFAULT_ORIGIN, MEDIA_HKDF_KEY_MAPPING, MEDIA_PATH_MAP } from '../Defaults/index.js'
+import {
+	BaileysEventMap, DownloadableMessage, MediaConnInfo, MediaDecryptionKeyInfo, MediaType, MessageType,
+	SocketConfig, WAGenericMediaMessage, WAMediaUpload, WAMediaUploadFunction, WAMessageContent
+} from '../Types/index.js'
+import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildBuffer, jidNormalizedUser } from '../WABinary/index.js'
+import { aesDecryptGCM, aesEncryptGCM, hkdf } from './crypto.js'
+import { generateMessageID } from './generics.js'
 
 const getTmpFilesDirectory = () => tmpdir()
 
@@ -354,7 +359,7 @@ export const encryptedStream = async(
 	if(type === 'file') {
 		bodyPath = (media as any).url
 	} else if(saveOriginalFileIfRequired) {
-		bodyPath = join(getTmpFilesDirectory(), mediaType + generateMessageID())
+		bodyPath = join(getTmpFilesDirectory(), String(mediaType) + generateMessageID())
 		writeStream = createWriteStream(bodyPath)
 		didSaveToTmpPath = true
 	}

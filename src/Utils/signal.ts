@@ -1,9 +1,9 @@
-import { KEY_BUNDLE_TYPE } from '../Defaults'
-import { SignalRepository } from '../Types'
-import { AuthenticationCreds, AuthenticationState, KeyPair, SignalIdentity, SignalKeyStore, SignedKeyPair } from '../Types/Auth'
-import { assertNodeErrorFree, BinaryNode, getBinaryNodeChild, getBinaryNodeChildBuffer, getBinaryNodeChildren, getBinaryNodeChildUInt, jidDecode, JidWithDevice, S_WHATSAPP_NET } from '../WABinary'
-import { Curve, generateSignalPubKey } from './crypto'
-import { encodeBigEndian } from './generics'
+import { KEY_BUNDLE_TYPE } from '../Defaults/index.js';
+import { SignalRepository } from '../Types/index.js';
+import { AuthenticationCreds, AuthenticationState, KeyPair, SignalIdentity, SignalKeyStore, SignedKeyPair } from '../Types/Auth.js';
+import { assertNodeErrorFree, BinaryNode, getBinaryNodeChild, getBinaryNodeChildBuffer, getBinaryNodeChildren, getBinaryNodeChildUInt, jidDecode, JidWithDevice, S_WHATSAPP_NET } from '../WABinary/index.js';
+import { Curve, generateSignalPubKey } from './crypto.js';
+import { encodeBigEndian } from './generics.js';
 
 export const createSignalIdentity = (
 	wid: string,

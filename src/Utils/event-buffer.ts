@@ -1,10 +1,15 @@
-import EventEmitter from 'events'
+import EventEmitter from 'node:events'
+
 import { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { BaileysEvent, BaileysEventEmitter, BaileysEventMap, BufferedEventData, Chat, ChatUpdate, Contact, WAMessage, WAMessageStatus } from '../Types'
-import { trimUndefined } from './generics'
-import { updateMessageWithReaction, updateMessageWithReceipt } from './messages'
-import { isRealMessage, shouldIncrementChatUnread } from './process-message'
+
+import { proto } from '../../WAProto/index.js'
+import {
+	BaileysEvent, BaileysEventEmitter, BaileysEventMap, BufferedEventData, Chat, ChatUpdate, Contact,
+	WAMessage, WAMessageStatus
+} from '../Types/index.js'
+import { trimUndefined } from './generics.js'
+import { updateMessageWithReaction, updateMessageWithReceipt } from './messages.js'
+import { isRealMessage, shouldIncrementChatUnread } from './process-message.js'
 
 const BUFFERABLE_EVENT = [
 	'messaging-history.set',
@@ -541,10 +546,10 @@ function consolidateEvents(data: BufferedEventData) {
 	}
 
 	const messageUpsertList = Object.values(data.messageUpserts)
-	if(messageUpsertList.length) {
+	if(Array.isArray(messageUpsertList)) {
 		const type = messageUpsertList[0].type
 		map['messages.upsert'] = {
-			messages: messageUpsertList.map(m => m.message),
+			messages: messageUpsertList.map((m: any) => m.message),
 			type
 		}
 	}

@@ -1,12 +1,12 @@
 import { AxiosRequestConfig } from 'axios'
 import type { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { AuthenticationCreds, BaileysEventEmitter, Chat, GroupMetadata, ParticipantAction, SignalKeyStoreWithTransaction, SocketConfig, WAMessageStubType } from '../Types'
-import { getContentType, normalizeMessageContent } from '../Utils/messages'
-import { areJidsSameUser, isJidBroadcast, isJidStatusBroadcast, jidNormalizedUser } from '../WABinary'
-import { aesDecryptGCM, hmacSign } from './crypto'
-import { getKeyAuthor, toNumber } from './generics'
-import { downloadAndProcessHistorySyncNotification } from './history'
+import { proto } from '../../WAProto/index.js'
+import { AuthenticationCreds, BaileysEventEmitter, Chat, GroupMetadata, ParticipantAction, SignalKeyStoreWithTransaction, SocketConfig, WAMessageStubType } from '../Types/index.js'
+import { getContentType, normalizeMessageContent } from './messages.js'
+import { areJidsSameUser, isJidBroadcast, isJidStatusBroadcast, jidNormalizedUser } from '../WABinary/index.js'
+import { aesDecryptGCM, hmacSign } from './crypto.js'
+import { getKeyAuthor, toNumber } from './generics.js'
+import { downloadAndProcessHistorySyncNotification } from './history.js'
 
 type ProcessMessageContext = {
 	shouldProcessHistoryMsg: boolean

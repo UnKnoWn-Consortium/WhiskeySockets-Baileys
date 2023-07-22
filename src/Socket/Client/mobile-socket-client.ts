@@ -1,5 +1,5 @@
-import { connect, Socket } from 'net'
-import { AbstractSocketClient } from './abstract-socket-client'
+import { connect, Socket } from 'node:net'
+import { AbstractSocketClient } from './abstract-socket-client.js'
 
 export class MobileSocketClient extends AbstractSocketClient {
 	protected socket: Socket | null = null

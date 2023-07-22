@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import axios, { AxiosRequestConfig } from 'axios'
-import { MOBILE_REGISTRATION_ENDPOINT, MOBILE_TOKEN, MOBILE_USERAGENT, REGISTRATION_PUBLIC_KEY } from '../Defaults'
-import { KeyPair, SignedKeyPair, SocketConfig } from '../Types'
-import { aesEncryptGCM, Curve, md5 } from '../Utils/crypto'
-import { jidEncode } from '../WABinary'
-import { makeBusinessSocket } from './business'
+import { MOBILE_REGISTRATION_ENDPOINT, MOBILE_TOKEN, MOBILE_USERAGENT, REGISTRATION_PUBLIC_KEY } from '../Defaults/index.js'
+import { KeyPair, SignedKeyPair, SocketConfig } from '../Types/index.js'
+import { aesEncryptGCM, Curve, md5 } from '../Utils/crypto.js'
+import { jidEncode } from '../WABinary/index.js'
+import { makeBusinessSocket } from './business.js'
 
 function urlencode(str: string) {
 	return str.replace(/-/g, '%2d').replace(/_/g, '%5f').replace(/~/g, '%7e')

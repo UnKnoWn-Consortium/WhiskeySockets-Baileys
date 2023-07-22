@@ -1,12 +1,12 @@
 import { AxiosRequestConfig } from 'axios'
-import { promisify } from 'util'
+import { promisify } from 'node:util'
 import { inflate } from 'zlib'
-import { proto } from '../../WAProto'
-import { Chat, Contact, WAMessageStubType } from '../Types'
-import { isJidUser } from '../WABinary'
-import { toNumber } from './generics'
-import { normalizeMessageContent } from './messages'
-import { downloadContentFromMessage } from './messages-media'
+import { proto } from '../../WAProto/index.js'
+import { Chat, Contact, WAMessageStubType } from '../Types/index.js'
+import { isJidUser } from '../WABinary/index.js'
+import { toNumber } from './generics.js'
+import { normalizeMessageContent } from './messages.js'
+import { downloadContentFromMessage } from './messages-media.js'
 
 const inflatePromise = promisify(inflate)
 

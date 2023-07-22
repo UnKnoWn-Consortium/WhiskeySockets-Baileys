@@ -1,9 +1,8 @@
-import type { proto } from '../../WAProto'
-import type { AccountSettings } from './Auth'
-import type { BufferedEventData } from './Events'
-import type { ChatLabelAssociationActionBody } from './LabelAssociation'
-import type { MessageLabelAssociationActionBody } from './LabelAssociation'
-import type { MinimalMessage } from './Message'
+import type { proto } from '../../WAProto/index.js'
+import type { AccountSettings } from './Auth.js'
+import type { BufferedEventData } from './Events.js'
+import type { ChatLabelAssociationActionBody, MessageLabelAssociationActionBody } from './LabelAssociation.js'
+import type { MinimalMessage } from './Message.js'
 
 /** privacy settings in WhatsApp Web */
 export type WAPrivacyValue = 'all' | 'contacts' | 'contact_blacklist' | 'none'

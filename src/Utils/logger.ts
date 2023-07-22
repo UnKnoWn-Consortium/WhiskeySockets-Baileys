@@ -1,3 +1,3 @@
-import P from 'pino'
+import { pino } from 'pino'
 
-export default P({ timestamp: () => `,"time":"${new Date().toJSON()}"` })
+export default pino({ timestamp: () => `,"time":"${new Date().toJSON()}"` })

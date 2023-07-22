@@ -1,7 +1,7 @@
 
-import * as constants from './constants'
-import { FullJid, jidDecode } from './jid-utils'
-import type { BinaryNode, BinaryNodeCodingOptions } from './types'
+import * as constants from './constants.js'
+import { FullJid, jidDecode } from './jid-utils.js'
+import type { BinaryNode, BinaryNodeCodingOptions } from './types.js'
 
 export const encodeBinaryNode = (
 	{ tag, attrs, content }: BinaryNode,

@@ -1,6 +1,6 @@
-import { Contact } from './Contact'
+import { Contact } from './Contact.js';
 
-export type WAConnectionState = 'open' | 'connecting' | 'close'
+export type WAConnectionState = 'open' | 'connecting' | 'close';
 
 export type ConnectionState = {
 	/** connection is now open, connecting or closed */

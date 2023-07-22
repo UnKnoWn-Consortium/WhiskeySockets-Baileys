@@ -1,10 +1,12 @@
-import EventEmitter from 'events'
-import { createReadStream } from 'fs'
-import { writeFile } from 'fs/promises'
+import EventEmitter from 'node:events'
+import { createReadStream } from 'node:fs'
+import { writeFile } from 'node:fs/promises'
+
 import { createInterface } from 'readline'
-import type { BaileysEventEmitter } from '../Types'
-import { delay } from './generics'
-import { makeMutex } from './make-mutex'
+
+import type { BaileysEventEmitter } from '../Types/index.js'
+import { delay } from './generics.js'
+import { makeMutex } from './make-mutex.js'
 
 /**
  * Captures events from a baileys event emitter & stores them in a file

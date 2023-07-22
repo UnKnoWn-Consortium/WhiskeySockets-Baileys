@@ -1,8 +1,8 @@
 import { AxiosRequestConfig } from 'axios'
 import { Logger } from 'pino'
-import { WAMediaUploadFunction, WAUrlInfo } from '../Types'
-import { prepareWAMessageMedia } from './messages'
-import { extractImageThumb, getHttpStream } from './messages-media'
+import { WAMediaUploadFunction, WAUrlInfo } from '../Types/index.js'
+import { prepareWAMessageMedia } from './messages.js'
+import { extractImageThumb, getHttpStream } from './messages-media.js'
 
 const THUMBNAIL_WIDTH_PX = 192
 

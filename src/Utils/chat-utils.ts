@@ -1,14 +1,18 @@
 import { Boom } from '@hapi/boom'
 import { AxiosRequestConfig } from 'axios'
 import type { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { BaileysEventEmitter, Chat, ChatModification, ChatMutation, ChatUpdate, Contact, InitialAppStateSyncOptions, LastMessageList, LTHashState, WAPatchCreate, WAPatchName } from '../Types'
-import { ChatLabelAssociation, LabelAssociationType, MessageLabelAssociation } from '../Types/LabelAssociation'
-import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, isJidGroup, jidNormalizedUser } from '../WABinary'
-import { aesDecrypt, aesEncrypt, hkdf, hmacSign } from './crypto'
-import { toNumber } from './generics'
-import { LT_HASH_ANTI_TAMPERING } from './lt-hash'
-import { downloadContentFromMessage, } from './messages-media'
+
+import { proto } from '../../WAProto/index.js'
+import {
+	BaileysEventEmitter, Chat, ChatModification, ChatMutation, ChatUpdate, Contact, InitialAppStateSyncOptions,
+	LastMessageList, LTHashState, WAPatchCreate, WAPatchName
+} from '../Types/index.js'
+import { ChatLabelAssociation, LabelAssociationType, MessageLabelAssociation } from '../Types/LabelAssociation.js'
+import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, isJidGroup, jidNormalizedUser } from '../WABinary/index.js'
+import { aesDecrypt, aesEncrypt, hkdf, hmacSign } from './crypto.js'
+import { toNumber } from './generics.js'
+import { LT_HASH_ANTI_TAMPERING } from './lt-hash.js'
+import { downloadContentFromMessage, } from './messages-media.js'
 
 type FetchAppStateSyncKey = (keyId: string) => Promise<proto.Message.IAppStateSyncKeyData | null | undefined>
 

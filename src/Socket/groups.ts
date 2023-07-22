@@ -1,8 +1,12 @@
-import { proto } from '../../WAProto'
-import { GroupMetadata, GroupParticipant, ParticipantAction, SocketConfig, WAMessageKey, WAMessageStubType } from '../Types'
-import { generateMessageID, unixTimestampSeconds } from '../Utils'
-import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, getBinaryNodeChildString, jidEncode, jidNormalizedUser } from '../WABinary'
-import { makeChatsSocket } from './chats'
+import { proto } from '../../WAProto/index.js'
+import {
+	GroupMetadata, GroupParticipant, ParticipantAction, SocketConfig, WAMessageKey, WAMessageStubType
+} from '../Types/index.js'
+import { generateMessageID, unixTimestampSeconds } from '../Utils/index.js'
+import {
+	BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, getBinaryNodeChildString, jidEncode, jidNormalizedUser
+} from '../WABinary/index.js'
+import { makeChatsSocket } from './chats.js'
 
 export const makeGroupsSocket = (config: SocketConfig) => {
 	const sock = makeChatsSocket(config)
