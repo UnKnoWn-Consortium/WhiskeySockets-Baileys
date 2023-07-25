@@ -1,9 +1,11 @@
+import type { Agent } from 'node:https'
+import type { URL } from 'node:url'
 
 import { AxiosRequestConfig } from 'axios'
-import type { Agent } from 'node:https'
 import type { Logger } from 'pino'
-import type { URL } from 'node:url'
+
 import { proto } from '../../WAProto/index.js'
+
 import { AuthenticationState, SignalAuthState, TransactionCapabilityOptions } from './Auth.js'
 import { MediaConnInfo } from './Message.js'
 import { SignalRepository } from './Signal.js'

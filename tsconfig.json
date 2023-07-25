@@ -13,6 +13,7 @@
     "noImplicitThis": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "lib": ["es2020", "esnext.array", "DOM"]

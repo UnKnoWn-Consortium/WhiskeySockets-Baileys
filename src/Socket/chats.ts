@@ -1,4 +1,5 @@
 import { Boom } from '@hapi/boom'
+
 import { proto } from '../../WAProto/index.js'
 import { PROCESSABLE_HISTORY_TYPES } from '../Defaults/index.js'
 import { ALL_WA_PATCH_NAMES, ChatModification, ChatMutation, LTHashState, MessageUpsertType, PresenceData, SocketConfig, WABusinessHoursConfig, WABusinessProfile, WAMediaUpload, WAMessage, WAPatchCreate, WAPatchName, WAPresence, WAPrivacyOnlineValue, WAPrivacyValue, WAReadReceiptsValue } from '../Types/index.js'

@@ -1,6 +1,7 @@
 import type KeyedDB from '@adiwajshing/keyed-db'
 import type { Comparable } from '@adiwajshing/keyed-db/lib/Types.js'
 import type { Logger } from 'pino'
+
 import { proto } from '../../WAProto/index.js'
 import { DEFAULT_CONNECTION_CONFIG } from '../Defaults/index.js'
 import type makeMDSocket from '../Socket/index.js'

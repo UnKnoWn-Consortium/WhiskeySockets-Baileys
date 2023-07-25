@@ -1,6 +1,8 @@
 import { Boom } from '@hapi/boom'
 import { Logger } from 'pino'
+
 import { proto } from '../../WAProto/index.js'
+
 import { SignalRepository, WAMessageKey } from '../Types/index.js'
 import { areJidsSameUser, BinaryNode, isJidBroadcast, isJidGroup, isJidStatusBroadcast, isJidUser } from '../WABinary/index.js'
 import { unpadRandomMax16 } from './generics.js'

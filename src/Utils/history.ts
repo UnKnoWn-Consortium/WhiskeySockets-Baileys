@@ -1,7 +1,9 @@
 import { AxiosRequestConfig } from 'axios'
 import { promisify } from 'node:util'
 import { inflate } from 'zlib'
+
 import { proto } from '../../WAProto/index.js'
+
 import { Chat, Contact, WAMessageStubType } from '../Types/index.js'
 import { isJidUser } from '../WABinary/index.js'
 import { toNumber } from './generics.js'

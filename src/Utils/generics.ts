@@ -1,12 +1,16 @@
 import { randomBytes } from 'node:crypto'
 import { platform, release } from 'node:os'
 
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
+const { version } = require('../Defaults/baileys-version.json')
+const baileysVersion = version
+
 import { Boom } from '@hapi/boom'
 import axios, { AxiosRequestConfig } from 'axios'
 import { Logger } from 'pino'
 
 import { proto } from '../../WAProto/index.js'
-import { version as baileysVersion } from '../Defaults/baileys-version.json'
 import { BaileysEventEmitter, BaileysEventMap, DisconnectReason, WACallUpdateType, WAVersion } from '../Types/index.js'
 import { BinaryNode, getAllBinaryNodeChildren } from '../WABinary/index.js'
 

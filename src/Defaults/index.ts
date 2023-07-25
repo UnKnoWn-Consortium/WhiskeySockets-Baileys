@@ -1,12 +1,16 @@
-import { proto } from '../../WAProto/index.js';
-import { makeLibSignalRepository } from '../Signal/libsignal.js';
-import { AuthenticationState, MediaType, SocketConfig, WAVersion } from '../Types/index.js';
-import { Browsers } from '../Utils/index.js';
-import logger from '../Utils/logger.js';
-import { version } from './baileys-version.json';
-import phoneNumberMCC from './phonenumber-mcc.json'
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
+const { version } = require('../Defaults/baileys-version.json')
+const phoneNumberMCC = require('./phonenumber-mcc.json')
 
-export const UNAUTHORIZED_CODES = [401, 403, 419];
+import { proto } from '../../WAProto/index.js'
+
+import { makeLibSignalRepository } from '../Signal/libsignal.js'
+import { AuthenticationState, MediaType, SocketConfig, WAVersion } from '../Types/index.js'
+import { Browsers } from '../Utils/index.js'
+import logger from '../Utils/logger.js'
+
+export const UNAUTHORIZED_CODES = [401, 403, 419]
 
 export const PHONENUMBER_MCC = phoneNumberMCC
 

@@ -5,6 +5,7 @@ import { AxiosRequestConfig } from 'axios'
 import type { Logger } from 'pino'
 
 import { proto } from '../../WAProto/index.js'
+
 import { MEDIA_HKDF_KEY_MAPPING } from '../Defaults/index.js'
 import type { GroupMetadata } from './GroupMetadata.js'
 import { CacheStore } from './Socket.js'

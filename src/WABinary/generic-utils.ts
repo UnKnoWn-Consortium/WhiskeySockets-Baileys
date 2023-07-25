@@ -1,4 +1,5 @@
 import { Boom } from '@hapi/boom'
+
 import { proto } from '../../WAProto/index.js'
 import { BinaryNode } from './types.js'
 

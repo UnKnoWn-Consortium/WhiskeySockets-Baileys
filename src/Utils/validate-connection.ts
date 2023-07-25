@@ -1,6 +1,8 @@
 import { Boom } from '@hapi/boom'
 import { createHash } from 'node:crypto'
+
 import { proto } from '../../WAProto/index.js'
+
 import { KEY_BUNDLE_TYPE } from '../Defaults/index.js'
 import type { AuthenticationCreds, SignalCreds, SocketConfig } from '../Types/index.js'
 import { BinaryNode, getBinaryNodeChild, jidDecode, S_WHATSAPP_NET } from '../WABinary/index.js'
